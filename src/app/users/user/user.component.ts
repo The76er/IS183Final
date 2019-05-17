@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     const userID = user.id;
     const resp = await this.userService.updateUser(userID, user);
     if (resp) {
-      this.router.navigate(['user']);
+      this.router.navigate(['users']);
     }
   }
 

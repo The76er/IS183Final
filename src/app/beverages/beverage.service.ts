@@ -37,13 +37,13 @@ export class BeverageService {
     }
 
     async deleteBeverage(beverageId): Promise<Object> {
-        const resp = await this.http.delete(`${this.apiUrl}/book/id/${beverageId}`).toPromise();
+        const resp = await this.http.delete(`${this.apiUrl}/beverage/id/${beverageId}`).toPromise();
         const status = resp.json();
         return status;
     }
 
     async updateBeverage(beverageId, beverage): Promise<Object> {
-        const resp = await this.http.put(`${this.apiUrl}/book/id/${beverageId}`, beverage).toPromise();
+        const resp = await this.http.put(`${this.apiUrl}/beverage/id/${beverageId}`, beverage).toPromise();
         const updatedBeverage = resp.json();
         return updatedBeverage;
     }
