@@ -2,7 +2,7 @@ import { Component, Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { environment } from '../../environments/environment';
 
-import 'rxjs';
+
 
 @Injectable()
 export class BeverageService {
@@ -19,25 +19,33 @@ export class BeverageService {
         return this.http.get(`${this.apiUrl}/beverage`)
         .toPromise()
         .then((resp) => {
-            let beverages = resp.json();
+            const beverages = resp.json();
             return beverages;
         });
     }
 
-    getBeverageById(beverageId): Promise<Object> {
-        return;
+    async getBeverageById(beverageId): Promise<Object> {
+        const resp = await this.http.get(`${this.apiUrl}/beverage/id/${beverageId}`).toPromise();
+        const beverage = resp.json();
+        return beverage || [];
     }
 
-    addBeverage(beverage): Promise<Object> {
-        return;
+    async addBeverage(beverage): Promise<Object> {
+        const resp = await this.http.post(`${this.apiUrl}/beverage`, beverage).toPromise();
+        const newBeverage = resp.json();
+        return newBeverage || null;
     }
 
-    deleteBeverage(id): Promise<Object> {
-        return;
+    async deleteBeverage(beverageId): Promise<Object> {
+        const resp = await this.http.delete(`${this.apiUrl}/book/id/${beverageId}`).toPromise();
+        const status = resp.json();
+        return status;
     }
 
-    updateBeverage(id, beverage): Promise<Object> {
-        return;
+    async updateBeverage(beverageId, beverage): Promise<Object> {
+        const resp = await this.http.put(`${this.apiUrl}/book/id/${beverageId}`, beverage).toPromise();
+        const updatedBeverage = resp.json();
+        return updatedBeverage;
     }
 
 }
