@@ -3,6 +3,7 @@ import { BookService } from './book.service';
 import { Router } from '@angular/router';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
